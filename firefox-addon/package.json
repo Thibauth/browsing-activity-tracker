@@ -1,0 +1,16 @@
+{
+  "name": "url-logger",
+  "title": "url-logger",
+  "id": "jid1-KLw59UduPgRwag",
+  "description": "Notify a callback url whenever a page is loaded/shown.",
+  "author": "Thibaut Horel <thibaut@horel.org>",
+  "license": "MPL 2.0",
+  "version": "0.1",
+  "preferences": [{
+        "name": "callbackUrl",
+        "type": "string",
+        "title": "Callback URL",
+        "description": "URL to be notified on page load/show.",
+        "value": "http://localhost:8080"
+  }]
+}
