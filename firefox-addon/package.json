@@ -1,6 +1,6 @@
 {
   "name": "url-logger",
-  "title": "url-logger",
+  "title": "URL Logger",
   "id": "jid1-KLw59UduPgRwag",
   "description": "Notify a callback url whenever a page is loaded/shown.",
   "author": "Thibaut Horel <thibaut@horel.org>",
