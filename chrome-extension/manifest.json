@@ -1,0 +1,12 @@
+{
+    "name": "Webpage Logger",
+    "version": "0.1",
+    "description": "Notify a callback URL",
+    "manifest_version": 2,
+    "background": {
+        "scripts": ["bg.js"]
+    },
+    "permissions": [
+        "tabs"
+    ]
+}
