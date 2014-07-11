@@ -12,5 +12,12 @@
         "title": "Callback URL",
         "description": "URL to be notified on page load/show.",
         "value": "http://localhost:8080"
+  },
+  {
+       "name": "key",
+       "type": "string",
+       "title": "Browser key",
+       "description": "Key to identify the browser.",
+       "value": "firefox"
   }]
 }

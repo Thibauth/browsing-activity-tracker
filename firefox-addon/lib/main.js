@@ -7,9 +7,10 @@ var XMLHttpRequest = require("sdk/net/xhr").XMLHttpRequest;
 function log(url, title){
     var xhr = new XMLHttpRequest();
     xhr.open("POST", prefs.callbackUrl);
-    var data = "url=" + url;
+    var data = "url=" + encodeURIComponent(url);
     data += "&time=" + Date.now();
-    data += "&title=" + title;
+    data += "&title=" + encodeURIComponent(title);
+    data += "&key=" + encodeURIComponent(prefs.key);
     xhr.send(data);
 }
 
