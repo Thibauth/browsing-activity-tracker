@@ -1,10 +1,20 @@
+var options = {};
+
+chrome.storage.local.get({callback: 'http://localhost:8080', key: 'chrome'}, function(o) { options = o; });
+
+chrome.storage.onChanged.addListener(function(changes) {
+    for (key in changes) {
+        options[key] = changes[key].newValue;
+    }
+});
+
 function log(url, title){
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://localhost:8080");
+    xhr.open("POST", options.callback);
     var data = "url=" + encodeURIComponent(url);
     data += "&time=" + Date.now();
     data += "&title=" + encodeURIComponent(title);
-    data += "&key=" + "chromium";
+    data += "&key=" + options.key;
     xhr.send(data);
 }
 
@@ -33,3 +43,5 @@ chrome.windows.onFocusChanged.addListener(function (windowId) {
         });
     }
 });
+
+
