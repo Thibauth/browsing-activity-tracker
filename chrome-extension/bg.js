@@ -1,20 +1,20 @@
-var options = {};
+var prefs = {};
 
-chrome.storage.local.get({callback: 'http://localhost:8080', key: 'chrome'}, function(o) { options = o; });
+chrome.storage.local.get({callback: 'http://localhost:8080', key: 'chrome'}, function(o) { prefs = o; });
 
 chrome.storage.onChanged.addListener(function(changes) {
     for (key in changes) {
-        options[key] = changes[key].newValue;
+        prefs[key] = changes[key].newValue;
     }
 });
 
 function log(url, title){
+    var data = JSON.stringify({
+        url: url, time: Date.now(),
+        title: title, key: prefs.key
+    });
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", options.callback);
-    var data = "url=" + encodeURIComponent(url);
-    data += "&time=" + Date.now();
-    data += "&title=" + encodeURIComponent(title);
-    data += "&key=" + options.key;
+    xhr.open("POST", prefs.callback);
     xhr.send(data);
 }
 

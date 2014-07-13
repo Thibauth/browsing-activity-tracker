@@ -5,12 +5,12 @@ var prefs = require("sdk/simple-prefs").prefs;
 var XMLHttpRequest = require("sdk/net/xhr").XMLHttpRequest;
 
 function log(url, title){
+    var data = JSON.stringify({
+        url: url, time: Date.now(),
+        title: title, key: prefs.key
+    });
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", prefs.callbackUrl);
-    var data = "url=" + encodeURIComponent(url);
-    data += "&time=" + Date.now();
-    data += "&title=" + encodeURIComponent(title);
-    data += "&key=" + encodeURIComponent(prefs.key);
+    xhr.open("POST", prefs.callback);
     xhr.send(data);
 }
 
@@ -18,7 +18,7 @@ function logTab(tab) {
     if (tab.id === tabs.activeTab.id) {
         log(tab.url, tab.title);
     }
-};
+}
 
 tabs.on("activate", function () { logTab(tabs.activeTab) });
 tabs.on("pageshow", logTab );
