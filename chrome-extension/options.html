@@ -4,21 +4,43 @@
     <meta charset="utf-8">
     <title>Webpage Logger Options</title>
     <style>
-        body {
-            margin-left: 2em;
-            font-family: sans-serif
-        }
+        body { font-family: "Droid Sans", sans-serif; color: #333; }
+        input { transition: border-color 0.3s; border: 1px solid #ccc; padding: 0.2em }
+        input:focus { border: 1px solid #66AFE9; outline: none; }
+        .logo { float: left; margin-right: 1em; }
+        h2 { margin: 0; padding: 0; margin-bottom: 0.1em; }
+        p { margin:0; padding: 0; }
+        header { border-bottom: 1px solid #ccc; padding-bottom: 0.5em; margin-bottom: 1em }
+        main { padding-left: 1em; }
+        a { text-decoration: none; color: #428BCA}
+        a:hover {text-decoration: underline; color: #2A6496}
+        hr { border: none; border-bottom: 1px solid #ccc;}
+        form {display: table; margin-left: 2em}
+        em.info {color: #777}
     </style>
 </head>
 <body>
-  <h2>Webpage Logger</h2>
-  <label>
-    Callback URL: <input id="callback" type="text">
-  </label>
-  <br>
-  <label>
-    Browser Key: <input id="key" type="text">
-  </label>
-  <script src='options.js'></script>
+<header>
+<img class="logo" src="icon48.png"/>
+<h2>Browsing Activity Tracker 0.1</h2>
+<p><em>By</em> <a href="mailto:thibaut@horel.org">Thibaut Horel</a></p>
+</header>
+<main>
+<p>Notify a callback URL whenever a webpage is loaded or displayed.
+<a href="http://github.com">Read more.</a></p>
+<h3>Options</h3>
+<form>
+<p>
+<label for=callback> Callback URL</label>: <input id="callback" type="text"><br/>
+<em class=info>URL to be notified.</em>
+</p>
+<hr/>
+<p>
+<label for=key> Browser Key:</label> <input id="key" type="text"><br/>
+<em class=info>Key to identify the browser.</em>
+</p>
+</main>
+<script src='options.js'></script>
+
 </body>
 </html>
