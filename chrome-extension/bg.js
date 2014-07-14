@@ -20,15 +20,23 @@ function log(url, title){
 
 chrome.tabs.onActivated.addListener(function (activeInfo) {
     chrome.tabs.get(activeInfo.tabId, function(tab) {
-        if (tab.status === "complete") {
-            log(tab.url, tab.title);
+        if (tab.status === "complete" && tab.active) {
+            chrome.windows.get(tab.windowId, {populate: false}, function(window) {
+                if (window.focused) {
+                    log(tab.url, tab.title);
+                }
+            });
         }
     });
 });
 
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
     if (changeInfo.status === "complete" && tab.active) {
-        log(tab.url, tab.title);
+        chrome.windows.get(tab.windowId, {populate: false}, function(window) {
+            if (window.focused) {
+                log(tab.url, tab.title);
+            }
+        });
     }
 });
 
@@ -36,12 +44,14 @@ chrome.windows.onFocusChanged.addListener(function (windowId) {
     if (windowId == chrome.windows.WINDOW_ID_NONE) {
         log(null, null);
     } else {
-        chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
-            if (tabs[0].status === "complete") {
-                log(tabs[0].url, tabs[0].title);
+        chrome.windows.get(windowId, {populate: true}, function(window) {
+            if (window.focused) {
+                chrome.tabs.query({active: true, windowId: windowId}, function (tabs) {
+                    if (tabs[0].status === "complete") {
+                        log(tabs[0].url, tabs[0].title);
+                    }
+                });
             }
         });
     }
 });
-
-
