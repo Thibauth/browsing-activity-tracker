@@ -1,16 +1,19 @@
 {
-  "name": "url-logger",
-  "title": "URL Logger",
+  "name": "browsing-activity-tracker",
+  "title": "Browsing Activity Tracker",
   "id": "jid1-KLw59UduPgRwag",
-  "description": "Notify a callback url whenever a page is loaded/shown.",
+  "description": "Notify a callback URL whenever a webpage is loaded or displayed.",
   "author": "Thibaut Horel <thibaut@horel.org>",
   "license": "MPL 2.0",
   "version": "0.1",
+  "homepage": "https://github.com/Thibauth/browsing-activity-tracker",
+  "icon": "icon48.png",
+  "icon64": "icon128.png",
   "preferences": [{
-        "name": "callbackUrl",
+        "name": "callback",
         "type": "string",
         "title": "Callback URL",
-        "description": "URL to be notified on page load/show.",
+        "description": "URL to be notified.",
         "value": "http://localhost:8080"
   },
   {
