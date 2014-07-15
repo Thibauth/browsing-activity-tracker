@@ -4,6 +4,8 @@ var Request = require("sdk/request").Request;
 var prefs = require("sdk/simple-prefs").prefs;
 var XMLHttpRequest = require("sdk/net/xhr").XMLHttpRequest;
 
+var previous_window = null;
+
 function log(url, title){
     var data = JSON.stringify({
         url: url, time: Date.now(),
@@ -21,6 +23,14 @@ function logTab(tab) {
 }
 
 tabs.on("activate", function () { logTab(tabs.activeTab) });
+
 tabs.on("pageshow", logTab );
-windows.on("activate", function () { logTab(tabs.activeTab) });
-windows.on("deactivate", function () { log(null, null) });
+windows.on("activate", function (window) {
+    if (previous_window != window) {
+        previous_window = window;
+        return;
+    }
+    logTab(tabs.activeTab) ;
+});
+
+windows.on("deactivate", function (window) { log(null, null) });
