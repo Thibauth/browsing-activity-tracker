@@ -8,10 +8,11 @@ chrome.storage.onChanged.addListener(function(changes) {
     }
 });
 
-function log(url, title){
+function log(url, title, favicon){
     var data = JSON.stringify({
         url: url, time: Date.now(),
-        title: title, key: prefs.key
+        title: title, key: prefs.key,
+        favicon: favicon
     });
     var xhr = new XMLHttpRequest();
     xhr.open("POST", prefs.callback);
@@ -23,7 +24,7 @@ chrome.tabs.onActivated.addListener(function (activeInfo) {
         if (tab.status === "complete" && tab.active) {
             chrome.windows.get(tab.windowId, {populate: false}, function(window) {
                 if (window.focused) {
-                    log(tab.url, tab.title);
+                    log(tab.url, tab.title, tab.favIconUrl || null);
                 }
             });
         }
@@ -34,7 +35,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
     if (changeInfo.status === "complete" && tab.active) {
         chrome.windows.get(tab.windowId, {populate: false}, function(window) {
             if (window.focused) {
-                log(tab.url, tab.title);
+                log(tab.url, tab.title, tab.favIconUrl || null);
             }
         });
     }
@@ -42,13 +43,13 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 
 chrome.windows.onFocusChanged.addListener(function (windowId) {
     if (windowId == chrome.windows.WINDOW_ID_NONE) {
-        log(null, null);
+        log(null, null, null);
     } else {
         chrome.windows.get(windowId, {populate: true}, function(window) {
             if (window.focused) {
                 chrome.tabs.query({active: true, windowId: windowId}, function (tabs) {
                     if (tabs[0].status === "complete") {
-                        log(tabs[0].url, tabs[0].title);
+                        log(tabs[0].url, tabs[0].title, tabs[0].favIconUrl || null);
                     }
                 });
             }

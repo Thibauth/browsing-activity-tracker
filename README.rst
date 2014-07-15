@@ -30,15 +30,17 @@ one the following events occur:
 
 The body of the POST request is a JSON object containing the following keys:
 
-=========  ===========
-Key Name   Description
-=========  ===========
-``title``  Title of the webpage (typically the content of the ``<title>`` tag)
-``url``    URL of the webpage
-``time``   Time at which the event occurred. Number of milliseconds elapsed
-           since 1 January 1970 00:00:00 UTC
-``key``    A key identifying the browser sending the request
-=========  ===========
+===========  ===========
+Key Name     Description
+===========  ===========
+``title``    Title of the webpage (typically the content of the ``<title>`` tag)
+``url``      URL of the webpage
+``time``     Time at which the event occurred. Number of milliseconds elapsed
+             since 1 January 1970 00:00:00 UTC
+``key``      A key identifying the browser sending the request
+``favicon``  The URL of the webpage's favicon (or ``null`` when there is no
+             favicon)
+===========  ===========
 
 For window deactivation events, all the keys except for the ``time`` key are
 set to ``null``.
@@ -48,10 +50,10 @@ Example of request content:
 .. code:: json
 
     {"url":"https://github.com/Thibauth/browsing-activity-tracker",
-     "time":1405354714678,
+     "time":1405458411242,
      "title":"Thibauth/browsing-activity-tracker",
-     "key":"firefox"}
-
+     "key":"firefox",
+     "favicon":"https://assets-cdn.github.com/favicon.ico"}
 
 Also note that the window activation and deactivation events are triggered by
 your window manager and vary depending on your configuration. For example, in
