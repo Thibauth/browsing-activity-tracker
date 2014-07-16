@@ -14,7 +14,16 @@ control over how it is produced.
 Installation
 ++++++++++++
 
-The extension is available both as a Firefox add-on and as a Chrome extension.
+The extension is available both as a Firefox add-on and as a Chrome extension:
+
+* Install__ from the Firefox Add-Ons Website
+* Install__ from the Chrome Web Store
+
+To install directly from the source, refer to the README files in the
+respective subfolders.
+
+__ https://addons.mozilla.org/en-US/firefox/addon/browsing-activity-tracker/
+__ https://chrome.google.com/webstore/detail/browsing-activity-tracker/maialhkckkpdbhimboiimgdgmhlianje
 
 How does it work?
 +++++++++++++++++
