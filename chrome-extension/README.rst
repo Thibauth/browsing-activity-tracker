@@ -2,7 +2,7 @@ This Chrome extension is available here__ on the Chrome Web Store.
 
 __ https://chrome.google.com/webstore/detail/browsing-activity-tracker/maialhkckkpdbhimboiimgdgmhlianje
 
-To install from the source:
+To install from source:
 
 * Go to ``chrome://extensions``.
 * Enable the *Developer mode* option.

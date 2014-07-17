@@ -19,8 +19,8 @@ The extension is available both as a Firefox add-on and as a Chrome extension:
 * Install__ from the Firefox Add-Ons Website
 * Install__ from the Chrome Web Store
 
-To install directly from the source, refer to the README files in the
-respective subfolders.
+To install directly from source, refer to the README files in the respective
+subfolders.
 
 __ https://addons.mozilla.org/en-US/firefox/addon/browsing-activity-tracker/
 __ https://chrome.google.com/webstore/detail/browsing-activity-tracker/maialhkckkpdbhimboiimgdgmhlianje
@@ -54,7 +54,7 @@ Key Name     Description
 For window deactivation events, all the keys except for the ``time`` key are
 set to ``null``.
 
-Example of request content:
+Example of request body:
 
 .. code:: json
 
@@ -80,6 +80,6 @@ authentication. The default settings are:
 ============ ===========
 Option       Default Value
 ============ ===========
-callback URL ``http://localhost:8080``
+Callback URL ``http://localhost:8080``
 Browser Key  ``firefox`` for Firefox, ``chrome`` for Chrome
 ============ ===========
